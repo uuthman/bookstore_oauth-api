@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:alpine
 
 
 ENV REPO_URL = github.com/uuthman/bookstore_oauth-api

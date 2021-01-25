@@ -1,0 +1,29 @@
+version: "3.8"
+
+services: 
+  cassandra:
+    image: bitnami/cassandra:latest
+    environment: 
+      CASSANDRA_TRANSPORT_PORT_NUMBER=7000
+    networks: 
+      backend
+    volumes: 
+      database_cassandra:/var/lib/postgresql/database_cassandra
+  
+      
+  web:
+    build: .
+    container_name: "oauth-api"
+    ports: 
+      "8080:8080"
+    depends_on: 
+      cassandra
+    networks: 
+      backend
+
+volumes: 
+  database_cassandra
+
+networks: 
+  backend:
+    driver: bridge  
