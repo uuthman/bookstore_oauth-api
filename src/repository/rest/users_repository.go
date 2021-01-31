@@ -29,7 +29,7 @@ func (r *usersRepository) LoginUser(email string, password string) (*users.User,
 		Password: password,
 	}
 
-	response,err := client.Post("https://api.bookstore.com/users/login", request)
+	response,err := client.Post("http://localhost:8081/users/login", request)
 
 
 	if err != nil {
